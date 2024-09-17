@@ -21,10 +21,10 @@ class Restaurante:
 
     @classmethod
     def listar_restaurantes(cls):
-        print(f'{"Nome do restaurante":<20} | {"Categoria":<20} | {"Status":<20}')
+        print(
+            f'{"Nome do restaurante".ljust(25)} | {"Categoria".ljust(25)} | {"Status".ljust(26)} | {"Avaliação".ljust(25)}')
         for restaurante in cls.restaurantes:
-            print(
-                f'{restaurante._nome:<20} | {restaurante._categoria:<20} | {restaurante.ativo}')
+            print(f'{restaurante._nome.ljust(25)} | {restaurante._categoria.ljust(25)} | {restaurante.ativo:<25} | {str(restaurante.media_avaliacoes).ljust(25)}')
 
     def alternar_estado(self):
         self._ativo = not self._ativo
@@ -33,7 +33,7 @@ class Restaurante:
         avaliacao = Avaliacao(cliente, nota)
         self._avaliacao.append(avaliacao)
 
-    @property
+    @ property
     def media_avaliacoes(self):
         if not self._avaliacao:
             return 0
